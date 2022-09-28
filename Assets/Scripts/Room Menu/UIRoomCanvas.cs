@@ -24,5 +24,20 @@ namespace PhotonPunExample
             gameObject.SetActive(false);
             _previousMenu.SetActive(true);
         }
+
+        public void TryStartGame()
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                Debug.LogError("PhotonNetwork : Trying to Load a level but we are not the master Client");
+                return;
+            }
+
+            // PhotonNetwork.AutomaticallySyncScene = true;
+            Debug.LogFormat("PhotonNetwork : Loading Level \"GameScene\" for {0} players.", PhotonNetwork.CurrentRoom.PlayerCount);
+            PhotonNetwork.CurrentRoom.SetMasterClient(PhotonNetwork.LocalPlayer);
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.LoadLevel("GameScene");
+        }
     }
 }
