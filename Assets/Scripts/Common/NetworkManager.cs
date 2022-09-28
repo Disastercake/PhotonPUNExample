@@ -23,8 +23,6 @@ namespace PhotonPunExample
         public event Action<List<RoomInfo>> OnRoomListUpdated;
         public event Action<Room> OnRoomJoined;
 
-        [SerializeField] private ServerSettings _photonServerSettings;
-
         private void Awake()
         {
             instance = this;
@@ -36,7 +34,6 @@ namespace PhotonPunExample
 
         public bool ConnectToServer()
         {
-            PhotonNetwork.PhotonServerSettings = _photonServerSettings;
             bool result = PhotonNetwork.ConnectUsingSettings();
 
             Debug.Log($"ConnectToServer: {result}");
