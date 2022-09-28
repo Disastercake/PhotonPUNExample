@@ -7,6 +7,7 @@ namespace PhotonPunExample
     [DisallowMultipleComponent]
     public class DisconnectWatcher : MonoBehaviour
     {
+        
         [SerializeField, Tooltip("This component will load this scene when disconnected from Photon.")]
         private string _sceneName;
         
@@ -18,5 +19,6 @@ namespace PhotonPunExample
                 SceneManager.LoadScene(_sceneName);
             }
         }
+        
     }
 }

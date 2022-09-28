@@ -1,8 +1,6 @@
-﻿using System;
-using Photon.Pun;
+﻿using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace PhotonPunExample
@@ -11,6 +9,7 @@ namespace PhotonPunExample
      RequireComponent(typeof(Button), typeof(Image))]
     public class UIButtonStartGame : MonoBehaviour
     {
+        
         [SerializeField] private string _nextScene = "GameScene";
         private Button _button;
 
@@ -56,5 +55,6 @@ namespace PhotonPunExample
             
             PhotonNetwork.LoadLevel(_nextScene);
         }
+        
     }
 }

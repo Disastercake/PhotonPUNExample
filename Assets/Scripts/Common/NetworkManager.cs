@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using UnityEngine;
 using Photon.Pun;
@@ -12,7 +10,7 @@ namespace PhotonPunExample
     public class NetworkManager : MonoBehaviourPunCallbacks
     {
 
-        private const int MAX_PLAYERS_PER_ROOM = 5;
+        public const int MAX_PLAYERS_PER_ROOM = 5;
         
         #region Singleton
 
