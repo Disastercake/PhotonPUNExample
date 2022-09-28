@@ -1,5 +1,6 @@
 ﻿using System;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -21,6 +22,23 @@ namespace PhotonPunExample
 
         private void OnEnable()
         {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            HandleInteractable();
+            NetworkManager.instance.MasterClientSwitched += OnMasterClientSwitched;
+        }
+
+        private void OnDisable()
+        {
+            NetworkManager.instance.MasterClientSwitched -= OnMasterClientSwitched;
+        }
+
+        private void OnMasterClientSwitched(Player newMasterClient)
+        {
+            HandleInteractable();
+        }
+
+        private void HandleInteractable()
+        {
             // Only the MasterClient can start the game.
             _button.interactable = PhotonNetwork.LocalPlayer.IsMasterClient;
         }
@@ -36,7 +54,6 @@ namespace PhotonPunExample
             Debug.Log(
                 $"PhotonNetwork : Loading Level \"{_nextScene}\" for {PhotonNetwork.CurrentRoom.PlayerCount} players.");
             
-            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.LoadLevel(_nextScene);
         }
     }
