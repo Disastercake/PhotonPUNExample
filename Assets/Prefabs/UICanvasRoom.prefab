@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8876051907591099229}
   - component: {fileID: 3316358846953566557}
   - component: {fileID: 7480744639590967681}
+  - component: {fileID: 6520162891249172720}
   m_Layer: 5
   m_Name: Button - Start
   m_TagString: Untagged
@@ -121,19 +122,21 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3316358846953566557}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1473581286674333426}
-        m_TargetAssemblyTypeName: PhotonPunExample.UIRoomCanvas, Assembly-CSharp
-        m_MethodName: TryStartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &6520162891249172720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675916900325783895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2e00b9a89d4d53a84c0b67e166b610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextScene: GameScene
+  _button: {fileID: 0}
 --- !u!1 &7797073974627135354
 GameObject:
   m_ObjectHideFlags: 0
