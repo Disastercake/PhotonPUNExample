@@ -1,6 +1,6 @@
-﻿using System;
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PhotonPunExample
 {
@@ -12,8 +12,11 @@ namespace PhotonPunExample
         
         private void Update()
         {
-            if (PhotonNetwork.IsConnected)
-                Debug.LogError("Disconnected from Photon server.");
+            if (!PhotonNetwork.IsConnected)
+            {
+                Debug.LogWarning("(PhotonNetwork.IsConnected == false) -> Returning to main menu.");
+                SceneManager.LoadScene(_sceneName);
+            }
         }
     }
 }
