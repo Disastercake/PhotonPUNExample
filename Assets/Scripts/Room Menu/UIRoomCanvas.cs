@@ -35,7 +35,6 @@ namespace PhotonPunExample
 
             // PhotonNetwork.AutomaticallySyncScene = true;
             Debug.LogFormat("PhotonNetwork : Loading Level \"GameScene\" for {0} players.", PhotonNetwork.CurrentRoom.PlayerCount);
-            PhotonNetwork.CurrentRoom.SetMasterClient(PhotonNetwork.LocalPlayer);
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.LoadLevel("GameScene");
         }
