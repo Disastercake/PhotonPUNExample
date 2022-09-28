@@ -22,6 +22,7 @@ namespace PhotonPunExample
 
         public event Action<List<RoomInfo>> OnRoomListUpdated;
         public event Action<Room> OnRoomJoined;
+        public event Action<Player> MasterClientSwitched;
 
         private void Awake()
         {
@@ -148,6 +149,11 @@ namespace PhotonPunExample
             
             // (maxPlayers == 0) means that there is no max player limit on the room. (maybe)
             return (playerCount > 0 && (maxPlayers == 0 || playerCount < maxPlayers));
+        }
+
+        public override void OnMasterClientSwitched(Player newMasterClient)
+        {
+            MasterClientSwitched?.Invoke(newMasterClient);
         }
 
         #endregion
