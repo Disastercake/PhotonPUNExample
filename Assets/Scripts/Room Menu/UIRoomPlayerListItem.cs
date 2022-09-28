@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using Common;
 using Photon.Realtime;
 using UnityEngine;
@@ -13,11 +14,33 @@ namespace PhotonPunExample
 
         public int Order { get; private set; }
         public Player Player { get; private set; }
+        public bool IsMasterClient { get; private set; }
+
+        private void OnEnable()
+        {
+            NetworkManager.instance.MasterClientSwitched += OnMasterClientSwitched;
+        }
+
+        private void OnDisable()
+        {
+            NetworkManager.instance.MasterClientSwitched -= OnMasterClientSwitched;
+        }
+
+        private void OnMasterClientSwitched(Player newMasterClient)
+        {
+            // No change needed if MasterClient state didn't change for this Player.
+            if (IsMasterClient == Player.IsMasterClient)
+                return;
+
+            IsMasterClient = Player.IsMasterClient;
+            RefreshVisuals();
+        }
 
         public void SetPlayer(Player player, int order)
         {
             Order = order;
             Player = player;
+            IsMasterClient = Player.IsMasterClient;
             RefreshVisuals();
         }
 
@@ -31,7 +54,7 @@ namespace PhotonPunExample
             else
                 strbldr.Append("Player ").Append(Player.ActorNumber);
             
-            if (Player.IsMasterClient)
+            if (IsMasterClient)
                 strbldr.Append(" (*)");
             
             _nameTextComp.text = strbldr.ToString();
