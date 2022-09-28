@@ -8,7 +8,7 @@ namespace PhotonPunExample
 {
     [DisallowMultipleComponent,
      RequireComponent(typeof(Button), typeof(Image))]
-    public class UIButtonStartGame : MonoBehaviour, IPointerClickHandler
+    public class UIButtonStartGame : MonoBehaviour
     {
         [SerializeField] private string _nextScene = "GameScene";
         private Button _button;
@@ -16,17 +16,13 @@ namespace PhotonPunExample
         private void Awake()
         {
             _button = GetComponent<Button>();
+            _button.onClick.AddListener(StartGame);
         }
 
         private void OnEnable()
         {
             // Only the MasterClient can start the game.
             _button.interactable = PhotonNetwork.LocalPlayer.IsMasterClient;
-        }
-
-        void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
-        {
-            StartGame();
         }
 
         private void StartGame()
