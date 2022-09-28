@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game_Logic
+namespace PhotonPunExample
 {
     [DisallowMultipleComponent]
     public class SpawnManager : MonoBehaviour
