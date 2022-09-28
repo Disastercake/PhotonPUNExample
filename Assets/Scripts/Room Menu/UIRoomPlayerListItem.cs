@@ -34,7 +34,7 @@ namespace PhotonPunExample
             if (Player.IsMasterClient)
                 strbldr.Append(" (*)");
             
-            _nameTextComp.text = name;
+            _nameTextComp.text = strbldr.ToString();
             transform.SetSiblingIndex(Order);
         }
 
