@@ -1,6 +1,6 @@
-﻿using Common;
+﻿using System.Text;
+using Common;
 using Photon.Realtime;
-using PrefabFactorySystem;
 using UnityEngine;
 
 namespace PhotonPunExample
@@ -23,7 +23,18 @@ namespace PhotonPunExample
 
         private void RefreshVisuals()
         {
-            _nameTextComp.text = Player.NickName;
+            var strbldr = new StringBuilder();
+
+            // If the player doesn't have a nickname set, then use their ActorNumber.
+            if (!string.IsNullOrEmpty(Player.NickName))
+                strbldr.Append(Player.NickName);
+            else
+                strbldr.Append("Player ").Append(Player.ActorNumber);
+            
+            if (Player.IsMasterClient)
+                strbldr.Append(" (*)");
+            
+            _nameTextComp.text = name;
             transform.SetSiblingIndex(Order);
         }
 
