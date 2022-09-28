@@ -30,14 +30,24 @@ namespace PhotonPunExample
         private void Start()
         {
             if (PhotonNetwork.IsConnected)
-                SpawnPlayer();
+                Invoke(nameof(SpawnPlayer), 1f);
         }
 
         private void SpawnPlayer()
         {
             Transform spawnPoint = GetRandomSpawnPoint();
 
-            PhotonNetwork.Instantiate(_pfPlayer.name, spawnPoint.position, spawnPoint.rotation);
+            // Parameters passed with instantiation.
+            object[] param = new object[1];
+            param[0] = $"{_pfPlayer.name} ({PhotonNetwork.LocalPlayer.ActorNumber})";
+
+            PhotonNetwork.Instantiate(
+                _pfPlayer.name,
+                spawnPoint.position,
+                spawnPoint.rotation,
+                0,
+                param);
         }
+        
     }
 }
