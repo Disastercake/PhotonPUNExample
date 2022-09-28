@@ -25,7 +25,11 @@ namespace PhotonPunExample
 
         private void RefreshVisuals()
         {
-            _nameTextComp.text = $"{RoomInfo.Name} ({RoomInfo.PlayerCount} / {RoomInfo.MaxPlayers})";
+            if (RoomInfo != null)
+                _nameTextComp.text = $"{RoomInfo.Name} ({RoomInfo.PlayerCount} / {RoomInfo.MaxPlayers})";
+            else
+                _nameTextComp.text = "ERROR";
+            
             transform.SetSiblingIndex(Order);
         }
 
