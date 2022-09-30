@@ -11,6 +11,9 @@ namespace PhotonPunExample
     {
         
         private GameObject _gameObject;
+        private ActorMotor _actorMotor;
+        private PlayerActorInputHandler _inputHandler;
+        private CharacterController _cc;
 
         #region Initialization
 
@@ -21,6 +24,9 @@ namespace PhotonPunExample
             if (_initialized) return;
             _initialized = true;
             _gameObject = gameObject;
+            _actorMotor = GetComponent<ActorMotor>();
+            _inputHandler = GetComponent<PlayerActorInputHandler>();
+            _cc = GetComponent<CharacterController>();
         }
 
         #endregion
@@ -32,6 +38,12 @@ namespace PhotonPunExample
             // e.g. Store this GameObject as this player's character in Player.TagObject
             info.Sender.TagObject = _gameObject;
             _gameObject.name = $"{_gameObject.name} (Player: {info.Sender.ActorNumber})";
+
+            bool isLocal = info.Sender.IsLocal;
+            
+            // Disable the input if not the local player.
+            _inputHandler.enabled = isLocal;
+            _cc.enabled = isLocal;
         }
         
     }
