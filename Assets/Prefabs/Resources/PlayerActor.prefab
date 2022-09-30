@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 8099249318079827483}
   - component: {fileID: 1926240562063119576}
   - component: {fileID: 788182428381785862}
-  - component: {fileID: 8343421031064447145}
   - component: {fileID: 1168145991243108944}
+  - component: {fileID: 8343421031064447145}
+  - component: {fileID: 1624973329251756192}
+  - component: {fileID: 1695251794497621859}
   m_Layer: 0
   m_Name: PlayerActor
   m_TagString: Untagged
@@ -94,18 +96,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8343421031064447145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859349344132380728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc72b5b498474c7786d996497cedb941, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1168145991243108944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +123,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1624973329251756192}
+        m_TargetAssemblyTypeName: PhotonPunExample.PlayerActorInputHandler, Assembly-CSharp
+        m_MethodName: OnMoveInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 22b13355-d275-4bec-a74a-fae880379767
     m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -189,6 +191,44 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8343421031064447145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859349344132380728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc72b5b498474c7786d996497cedb941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1624973329251756192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859349344132380728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31893f168ef4ec48946a3b26d59d343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1695251794497621859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859349344132380728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5bb3c715a94c2a89644da42b9fc06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gravity: {x: 0, y: -10, z: 0}
+  _speed: 10
 --- !u!1 &8831493024317568637
 GameObject:
   m_ObjectHideFlags: 0
